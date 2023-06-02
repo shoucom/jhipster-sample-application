@@ -1,0 +1,118 @@
+<div>
+  <h2 id="page-heading" data-cy="VisitHeading">
+    <span jhiTranslate="jhipsterSampleApplicationApp.visit.home.title">Visits</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.visit.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-visit"
+        [routerLink]="['/visit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="jhipsterSampleApplicationApp.visit.home.createLabel"> Create a new Visit </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="visits?.length === 0">
+    <span jhiTranslate="jhipsterSampleApplicationApp.visit.home.notFound">No Visits found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="visits && visits.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="inTime">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplicationApp.visit.inTime">In Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="outTime">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplicationApp.visit.outTime">Out Time</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="visitor.id">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplicationApp.visit.visitor">Visitor</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="office.id">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplicationApp.visit.office">Office</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="host.id">
+            <div class="d-flex">
+              <span jhiTranslate="jhipsterSampleApplicationApp.visit.host">Host</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let visit of visits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/visit', visit.id, 'view']">{{ visit.id }}</a>
+          </td>
+          <td>{{ visit.inTime | formatMediumDatetime }}</td>
+          <td>{{ visit.outTime | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="visit.visitor">
+              <a [routerLink]="['/visitor', visit.visitor.id, 'view']">{{ visit.visitor.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="visit.office">
+              <a [routerLink]="['/office', visit.office.id, 'view']">{{ visit.office.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="visit.host">
+              <a [routerLink]="['/employee', visit.host.id, 'view']">{{ visit.host.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/visit', visit.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/visit', visit.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(visit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

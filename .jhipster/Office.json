@@ -1,0 +1,51 @@
+{
+  "applications": "*",
+  "changelogDate": "20230602101728",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "office",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "address",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timeZone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "wifiPassword",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Office",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "office",
+      "relationshipName": "employee",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "attendance",
+      "otherEntityRelationshipName": "office",
+      "relationshipName": "attendance",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "visit",
+      "otherEntityRelationshipName": "office",
+      "relationshipName": "visit",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

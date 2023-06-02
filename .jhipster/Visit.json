@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20230602101731",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "visit",
+  "fields": [
+    {
+      "fieldName": "inTime",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "outTime",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Visit",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "visitor",
+      "otherEntityRelationshipName": "visit",
+      "relationshipName": "visitor",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "office",
+      "otherEntityRelationshipName": "visit",
+      "relationshipName": "office",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "employee",
+      "relationshipName": "host",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

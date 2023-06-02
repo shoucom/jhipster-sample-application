@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20230602101729",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "employee",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pin",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Employee",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "office",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "office",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "attendance",
+      "otherEntityRelationshipName": "employee",
+      "relationshipName": "attendance",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

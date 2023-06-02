@@ -1,0 +1,27 @@
+{
+  "jhipsterSampleApplicationApp": {
+    "visitor": {
+      "home": {
+        "title": "Visitors",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Visitor",
+        "createOrEditLabel": "Create or edit a Visitor",
+        "notFound": "No Visitors found"
+      },
+      "created": "A new Visitor is created with identifier {{ param }}",
+      "updated": "A Visitor is updated with identifier {{ param }}",
+      "deleted": "A Visitor is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Visitor {{ id }}?"
+      },
+      "detail": {
+        "title": "Visitor"
+      },
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "visit": "Visit"
+    }
+  }
+}

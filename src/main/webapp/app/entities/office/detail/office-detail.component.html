@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="office">
+      <h2 data-cy="officeDetailsHeading"><span jhiTranslate="jhipsterSampleApplicationApp.office.detail.title">Office</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ office.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.office.name">Name</span></dt>
+        <dd>
+          <span>{{ office.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.office.address">Address</span></dt>
+        <dd>
+          <span>{{ office.address }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.office.timeZone">Time Zone</span></dt>
+        <dd>
+          <span>{{ office.timeZone }}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterSampleApplicationApp.office.wifiPassword">Wifi Password</span></dt>
+        <dd>
+          <span>{{ office.wifiPassword }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/office', office.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
