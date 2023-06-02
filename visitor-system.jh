@@ -1,0 +1,46 @@
+
+entity Office {
+	name String
+    address String
+    timeZone String
+    wifiPassword String
+}
+
+entity Employee {
+	name String
+    pin Long
+    email String
+    phone Long
+    office Office
+}
+
+entity Visitor {
+	name String
+    email String
+    phone Long
+}
+
+entity Visit {
+	visitor Visitor
+    host Employee
+    office Office
+    inTime Date
+    outTime Date
+}
+
+entity Attendance {
+	employee Employee
+    office Office
+    inTime Date
+    outTime Date
+}
+
+relationship ManyToOne {
+	Employee to Office
+	Attendance to Employee
+	Attendance to Office
+    Visit to Visitor
+    Visit to Office
+    Visit{host} to Employee
+}
+
